@@ -1,0 +1,115 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+<style>
+  .hidden {
+      display: none;
+  }
+  </style>
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Get Print </h6>
+         
+                <form  method="post" action="{% url 'finalinvoice1' %}"  >
+                   
+                  {% csrf_token %} 
+                  <div class="mb-3">
+                    <label for="id" class="form-label" > File Name = RAU-{{work.id}}-2024</label>
+                    <input type="number" class="form-control" id="id" name="id" value="{{work.id}}" style="display: none;">
+                    <button type="submit" style="margin-left: 320px;" class="btn btn-primary">Generate Print</button> 
+                  </div>
+                 
+                  
+
+                    <div class="mb-3 column1 docfield">
+                        <label for="name" class="form-label" > Client Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{work.name}}">
+                    </div>
+          
+                    <div class="mb-3 column2">
+                      <label for="contact" class="form-label">Client Contact</label>
+                      <input type="text" class="form-control" id="contact" name="contact" value="{{work.contact}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="work" class="form-label" > Type of work</label>
+                    <input type="text" class="form-control" id="work" name="work" value="{{work.work}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="dis" class="form-label" > District</label>
+                    <input type="text" class="form-control" id="diss" name="diss" value="{{work.diss}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="place" class="form-label" > Taluka</label>
+                    <input type="text" class="form-control" id="tal" name="tal" value="{{work.tal}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="vil" class="form-label" > Village</label>
+                    <input type="text" class="form-control" id="vils" name="vils" value="{{work.vils}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="un" class="form-label" > Unit</label>
+                    <input type="text" class="form-control" id="un" name="un" value="{{work.un}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="su" class="form-label" > Survey</label>
+                    <input type="text" class="form-control" id="su" name="su" value="{{work.su}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="fp" class="form-label" > Fp No</label>
+                    <input type="text" class="form-control" id="fp" name="fp" value="{{work.fp}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="tp" class="form-label" > Tp No</label>
+                    <input type="text" class="form-control" id="tp" name="tp" value="{{work.tp}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="op" class="form-label" > Op No</label>
+                    <input type="text" class="form-control" id="op" name="op" value="{{work.op}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="bl" class="form-label" >Block No</label>
+                    <input type="text" class="form-control" id="bl" name="bl" value="{{work.bl}}">
+                  </div>
+                  <div class="mb-3 column1 docfield">
+                    <label for="wo" class="form-label" > Ward No</label>
+                    <input type="text" class="form-control" id="wo" name="wo" value="{{work.wo}}">
+                  </div>
+                  <div class="mb-3 column2">
+                    <label for="ca" class="form-label" > Case No</label>
+                    <input type="text" class="form-control" id="ca" name="ca" value="{{work.ca}}">
+                  </div>
+                
+                  
+              
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewwork' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

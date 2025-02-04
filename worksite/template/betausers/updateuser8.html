@@ -1,0 +1,114 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit Work</h6>
+         
+                <form  method="post" action="{% url 'updateuser8' id=id %}" >
+                   
+                  {% csrf_token %}
+                 
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label" > Client Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{work.name}}">
+                    </div>
+                    
+          
+                 
+                    <div class="mb-3">
+                      <label for="contact" class="form-label">Contact</label>
+                      <input type="text" class="form-control" id="contact" name="contact" value="{{work.contact}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="work" class="form-label" > Type of work</label>
+                    <input type="text" class="form-control" id="work" name="work" value="{{work.work}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="dis" class="form-label" > District</label>
+                    <input type="text" class="form-control" id="dis" name="dis" value="{{work.diss}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="place" class="form-label" > Taluka</label>
+                    <input type="text" class="form-control" id="place" name="place" value="{{work.tal}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="vil" class="form-label" > Village</label>
+                    <input type="text" class="form-control" id="vil" name="vil" value="{{work.vils}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="un" class="form-label" > Unit</label>
+                    <input type="text" class="form-control" id="un" name="un" value="{{work.un}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="su" class="form-label" > Survey</label>
+                    <input type="text" class="form-control" id="su" name="su" value="{{work.su}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="fp" class="form-label" > Fp No</label>
+                    <input type="text" class="form-control" id="fp" name="fp" value="{{work.fp}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="tp" class="form-label" > Tp No</label>
+                    <input type="text" class="form-control" id="tp" name="tp" value="{{work.tp}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="op" class="form-label" > Op No</label>
+                    <input type="text" class="form-control" id="op" name="op" value="{{work.op}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="bl" class="form-label" >Block No</label>
+                    <input type="text" class="form-control" id="bl" name="bl" value="{{work.bl}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="wo" class="form-label" > Ward No</label>
+                    <input type="text" class="form-control" id="wo" name="wo" value="{{work.wo}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="ca" class="form-label" > Case No</label>
+                    <input type="text" class="form-control" id="ca" name="ca" value="{{work.ca}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="admin" class="form-label" > Access to</label>
+                    <input type="text" class="form-control" id="admin" name="admin" value="{{work.admin}}">
+                  </div>
+                 
+
+                
+                
+                  
+                <button type="submit" class="btn btn-warning">Edit</button>
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'user8' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

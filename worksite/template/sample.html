@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Dropdown</title>
+    <style>
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+
+        .dropdown-list {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .dropdown-list div {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-list div:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <label for="fruits">Choose a fruit:</label>
+    <div class="dropdown-container" id="dropdown-container">
+        <input type="text" id="fruits" name="fruits" autocomplete="off">
+        <div class="dropdown-list" id="dropdown-list">
+            <div>Apple</div>
+            <div>Banana</div>
+            <div>Cherry</div>
+            <div>Date</div>
+            <div>Grape</div>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById('fruits');
+        const dropdown = document.getElementById('dropdown-list');
+        const container = document.getElementById('dropdown-container');
+
+        input.addEventListener('click', function() {
+            dropdown.style.display = 'block';
+        });
+
+        dropdown.addEventListener('click', function(e) {
+            if (e.target && e.target.nodeName === "DIV") {
+                input.value = e.target.innerText;
+                dropdown.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!container.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        input.addEventListener('input', function() {
+            dropdown.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

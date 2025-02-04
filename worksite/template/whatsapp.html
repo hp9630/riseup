@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %} 
+<div class="container my-3">
+  
+                <h6 class="mb-4">Please Enter Mobile Number and Message</h6>
+
+                <form  action="senddata" method="POST" >
+                  {% csrf_token %} 
+
+                    <div class="mb-3">
+                        <label for="Phone" class="form-label" >Enter Phone Number </label>
+                        <input type="Phone" required autofocus class="form-control" id="Phone" name="Phone"  area-describedby="Phone" placeholder="Please Enter 10 digit whatsapp number " required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Message" class="form-label" >Enter Message </label>
+                       <textarea name="Message" id="Message" cols="30" class="form-control" rows="5" placeholder="Enter Message"></textarea>
+                    
+                    </div>
+                    
+                        <input type="submit" value="Send" class="btn btn-primary btn-lg">
+                        <a href="/" class="btn btn-secondary btn-lg ml-5">Clear</a>{{msg}}
+                </form>
+       
+</div>
+
+{% endblock  %} 
+

@@ -1,0 +1,36 @@
+.cardWrapper {
+    background: #fff;
+    box-shadow: 0px 4px 24px -20px #333;
+    width: 100%;
+    margin: calc(var(--ael_measure_6) * var(--ael_type_size)) 0;
+}
+.base{
+    background: #009CFF;
+    color: #FFFFFF;
+    padding: 3px 7px;
+    border-color: #009CFF;
+}
+.razorpay{
+    background: #009CFF;
+    color: #FFFFFF;
+    padding: 3px 7px;
+    border-color: #009CFF;
+    margin-right: 140px;
+    margin-bottom: 50px;
+    float: right;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
+.textstyle{
+    font-family: "Times New Roman", Times, serif;
+}
+.signup{
+    
+    margin-left: 450px;
+}
+.checkout{
+    float: right;
+}

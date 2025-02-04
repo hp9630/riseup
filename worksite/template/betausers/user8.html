@@ -1,0 +1,123 @@
+{%extends 'adminmain12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+   <!-- <h3 style="text-align: center;padding-bottom: 20px;color: #009CFF;">View Patient </h3> -->
+
+  <br>
+  <!-- <button onclick="redirectToPage()" class="btn btn-primary import">Import Data</button> -->
+<h2><h1>Welcome, {{ user.username }}</h1></h2>
+              <h2><p  class= "select plus-btn" >
+                <a class="button1 plus-plus"type="button" href="{% url 'addwork' %}"><i class="fa fa-plus" ></i></a> 
+            </p></h2>
+        <div class="table-responsive" style="margin-top: -50px;">
+            <table id="example" class="table" style="margin-top: 30px;">
+                <thead>
+                  <tr>
+                    <th>
+                      File Name
+                    </th>
+                    <th>
+                      Client Name
+                    </th>
+                    <th>
+                      Client Contact
+                      <th>
+                        Type of work
+                      </th>
+                    <th>
+                      District
+                    </th>
+                    <th>
+                      Taluka
+                    </th>
+                    <th>
+                      Village
+                    </th>
+                    <th>
+                      Unit
+                    </th>
+                    <th>
+                      Survey
+                    </th>
+                    <th>
+                      Fp No
+                    </th>
+                    <th>
+                      Tp No
+                    </th>
+                    <th>
+                      Op No
+                    </th>
+                    <th>
+                      Ward No
+                    </th>
+                    <th>
+                      Case No
+                    </th>
+                    <th>
+                      Block No
+                    </th>
+    
+                    <th>
+                      Access
+                    </th>
+                   
+                    
+                    <th>Update</th>
+                    <th>Send</th>
+                    <th>Print</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                  
+
+                      {% for i in user_work %}
+                      <tr></tr>
+                      <td>RAU-{{i.id}}-2024</td>
+                 
+                      <td>{{i.name}}</td>
+                      <td>{{i.contact}}</td>
+                      <td>{{i.work}}</td>
+                      <td>{{i.diss}}</td>
+                      <td>{{i.tal}}</td>
+                      <td>{{i.vils}}</td>
+                      <td>{{i.un}}</td>
+                      <td>{{i.su}}</td>
+                      <td>{{i.fp}}</td>
+                      <td>{{i.tp}}</td>
+                      <td>{{i.op}}</td>
+                      <td>{{i.wo}}</td>
+                      <td>{{i.ca}}</td>
+                      <td>{{i.bl}}</td>
+                      <td>{{i.admin}}</td>
+                      <td class="select"><a class="button"href="{% url 'edituser8' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+                      <td class="select"><a class="button"href="{% url 'editwork1' i.id %}" onclick="return confirm('Are   you really want to send ')" class="btn btn-warning">Send</a></td>
+                      <td class="select"><a class="button"href="{% url 'editinvoice1' i.id %}" onclick="return confirm('Are   you really want to download Print ')" class="btn btn-warning">Print</a></td>    
+                   
+                    </tr>
+                    {% endfor i in user_work %}
+              </tbody>
+                
+                
+             
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>
+  function redirectToPage() {
+           window.location.href = '/pat_csv';  // Replace '/another-page' with your desired URL
+       }
+</script>
+<!-- Table End -->
+{% endblock %}
+

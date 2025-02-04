@@ -1,0 +1,59 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Send Details</h6>
+         
+                <form  method="post" action="{% url 'sendwork' id=id %}" >  
+                  {% csrf_token %} 
+                  <div class="mb-3">
+                    <label for="id" class="form-label" > File Name = RAU-{{work.id}}-2024</label>
+                    <input type="number" class="form-control" id="id" name="id" value="{{work.id}}" style="display: none;">
+
+                  </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label" > Client Name:{{work.name}}</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{work.name}}" style="display: none;">
+                    </div>
+                    <div class="mb-3">
+                      <label for="contact" class="form-label">Contact:{{work.contact}}</label>
+                      <input type="text" class="form-control" id="contact" name="contact" value="{{work.contact}}"style="display: none;">
+                  </div>
+               
+                
+                  <input type="submit" value="Send" class="btn btn-primary btn-lg">
+                
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewwork' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

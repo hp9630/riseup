@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Image</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Capture Image</h1>
+    <button id="captureButton">Capture Image</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <script>
+        $(document).ready(function() {
+            const video = document.createElement('video');
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function(err) {
+                    console.error('Error accessing webcam: ', err);
+                });
+
+            $('#captureButton').click(function() {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                canvas.toBlob(function(blob) {
+                    const formData = new FormData();
+                    formData.append('image', blob, 'image.png');
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "upload_image" %}',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            console.log('Image uploaded successfully!');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error uploading image: ', error);
+                        }
+                    });
+                }, 'image/png');
+            });
+        });
+    </script>
+</body>
+</html>
